@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'furima/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root 'application#index'
+  root to: "application#index"
 end
