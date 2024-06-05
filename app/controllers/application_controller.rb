@@ -2,11 +2,8 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
 
-  def index
-    respond_to do |format|
-      format.html # index.html.erbが表示されます
-      format.json { render json: { message: "Welcome to the Application" } }
-    end
+  def application
+   
   end
 
   private
