@@ -337,7 +337,7 @@
                 <mxCell id="536" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=default;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=1;shadow=1;labelBackgroundColor=default;sketch=0;strokeColor=default;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="495">
                     <mxGeometry y="390" width="555" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="537" value="price" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;rounded=1;shadow=1;labelBackgroundColor=default;sketch=0;strokeColor=default;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="536">
+                <mxCell id="537" value="price_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=default;top=0;left=0;bottom=0;right=0;pointerEvents=1;rounded=1;shadow=1;labelBackgroundColor=default;sketch=0;strokeColor=default;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" vertex="1" parent="536">
                     <mxGeometry width="120" height="40" as="geometry">
                         <mxRectangle width="120" height="40" as="alternateBounds"/>
                     </mxGeometry>
