@@ -1,24 +1,57 @@
-# README
+1. users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- has_many :products
+- has_many :purchases
 
-Things you may want to cover:
+|Column|Type|Options|
+|---|---|---|
+|nickname |string |null: false |
+|email |string |null: false, unique: true |
+|encrypted_password |string |null: false |
+|first_name |string |null: false |
+|last_name |string |null: false |
+|first_name_kana |string|null: false |
+|last_name_kana |string|null: false |
+|birth_date |date--|null: false |
 
-* Ruby version
+2. products テーブル
 
-* System dependencies
+- belongs_to :user
+- has_one :purchase
 
-* Configuration
+|Column|Type|Options|
+|---|---|---|
+|user |references |null: false, foreign_key: true |
+|name |string |null: false |
+|description |text |null: false |
+|category_id |integer |null: false, check (category in ('---')) |
+|condition_id |integer |null: false, check (condition in ('---')) |
+|shipping_payer_id |integer |null: false, check (shipping_payer in ('---')) |
+|shipping_region_id |integer |null: false, check (shipping_region in ('---')) |
+|shipping_day_id |integer |null: false, check (shipping_day in ('---')) |
+|price |integer |null: false, check (price >= 300 and price <= 9999999) |
 
-* Database creation
+3. purchases テーブル
 
-* Database initialization
+- belongs_to :user
+- belongs_to :product
+- has_one :shipping_address
 
-* How to run the test suite
+|Column|Type|Options|
+|---|---|---|
+|user |references |null: false, foreign_key: true |
+|product |references |null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+4. shipping_addresses テーブル
 
-* Deployment instructions
+- belongs_to :purchase
 
-* ...
+|Column|Type|Options|
+|---|---|---|
+|purchase |references |null: false, foreign_key: true |
+|postal_code |string |null: false, check (postal_code ~ '^\d{3}-\d{4}$') |
+|shipping_region_id |integer |null: false |
+|city |string |null: false |
+|address_line |string |null: false |
+|building_name |string |---|
+|phone_number |string |null: false, check (phone_number ~ '^\d{10,11}$') |
