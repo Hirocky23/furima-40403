@@ -25,6 +25,6 @@ production:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: furima_40403
   username: furima_40403_user
-  password: <%= ENV['G1SClSTTJDmW2tdPgs9a8gxsqAexbIak'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   host: dpg-cper05n109ks73fit2f0-a
   port: 5432
