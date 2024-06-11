@@ -27,4 +27,3 @@ production:
   username: furima_40403_user
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: dpg-cper05n109ks73fit2f0-a
-  port: 5432
