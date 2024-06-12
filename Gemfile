@@ -84,3 +84,5 @@ gem 'devise'
 gem 'rspec-rails', '~> 6.1.2'
 
 gem 'factory_bot_rails'
+
+gem 'active_hash'
