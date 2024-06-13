@@ -2,5 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import Rails from "@rails/ujs"
+import { DirectUpload } from "@rails/activestorage"
 
 Rails.start()
+ActiveStorage.start()

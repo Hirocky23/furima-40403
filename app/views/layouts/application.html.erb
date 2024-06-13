@@ -8,10 +8,21 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+   <%= stylesheet_link_tag "items/exhibit-btn", "data-turbo-track": "reload" %> <!-- 追加 -->
 </head>
 
 <body>
+
   <%= yield %>
+
+  <% if user_signed_in? %>
+    <div class="purchase-btn">
+      <%= link_to new_item_path, class: "purchase-btn-text", id: "new-item-link" do %>
+        <span>出品する</span>
+        <%= image_tag "icon_camera.png", class: "purchase-btn-icon",id: "new-item-icon" %>
+      <% end %>
+    </div>
+  <% end %>
 </body>
 
 </html>
