@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @items = Item.order("created_at DESC")
   end
 
   def show
@@ -22,10 +23,16 @@ class ItemsController < ApplicationController
     @item.user = current_user
 
     if @item.save
-      redirect_to @item, notice: 'Item was successfully created.'
+      redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
   end
 
   def update
