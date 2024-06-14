@@ -14,7 +14,7 @@
 |last_name_kana |string|null: false |
 |birth_date |date--|null: false |
 
-2. products テーブル
+2. items テーブル
 
 - belongs_to :user
 - has_one :purchase
