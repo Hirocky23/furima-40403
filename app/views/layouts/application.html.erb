@@ -7,15 +7,15 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-   <%= stylesheet_link_tag "items/exhibit-btn", "data-turbo-track": "reload" %> <!-- 追加 -->
+   <%= javascript_importmap_tags %>
 </head>
 
 <body>
 
   <%= yield %>
 
-  <% if user_signed_in? %>
+<% if user_signed_in? && controller_name == 'items' && action_name == 'index' %>
+  <div class="purchase-btn">
     <div class="purchase-btn">
       <%= link_to new_item_path, class: "purchase-btn-text", id: "new-item-link" do %>
         <span>出品する</span>
