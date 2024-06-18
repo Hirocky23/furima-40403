@@ -7,5 +7,4 @@ pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.4/lib/assets/compil
 pin "@rails/activestorage", to: "https://ga.jspm.io/npm:@rails/activestorage@7.0.4/app/assets/javascripts/activestorage.esm.js", preload: true
 pin "item_price", to: "item_price.js", preload: true
 pin "application", to: "application.js", preload: true
-pin "hide_button", to: "hide_button.js"
 

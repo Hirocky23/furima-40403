@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
     @items = Item.order("created_at DESC")
   end
 
@@ -29,18 +28,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
-
-  def item_params
-    params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
-  end
-
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to @item, notice: 'Item was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -52,7 +45,7 @@ class ItemsController < ApplicationController
 
   private
 
-    def item_params
-      params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
-    end
+  def item_params
+    params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
+  end
 end
