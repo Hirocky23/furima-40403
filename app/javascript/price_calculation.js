@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isNaN(price) && price >= 300 && price <= 9999999) {
       const fee = Math.floor(price * 0.1);  // 販売手数料10%
-      const profitAmount = price - fee;
+      const profitAmount = Math.floor(price - fee);  // 販売利益
       taxPrice.innerHTML = fee.toLocaleString();
       profit.innerHTML = profitAmount.toLocaleString();
     } else {

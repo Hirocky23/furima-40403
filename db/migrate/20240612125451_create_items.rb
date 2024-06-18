@@ -13,6 +13,5 @@ class CreateItems < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_check_constraint :items, 'price >= 300 AND price <= 9999999', name: 'price_range'
   end
 end

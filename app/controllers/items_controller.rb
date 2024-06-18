@@ -2,19 +2,11 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @items = Item.order("created_at DESC")
-  end
-
-  def show
-    @item = Item.find(params[:id])
+    #@items = Item.order("created_at DESC")
   end
 
   def new
     @item = Item.new
-  end
-
-  def edit
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -26,21 +18,6 @@ class ItemsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def update
-    @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to items_url, notice: 'Item was successfully destroyed.'
   end
 
   private
