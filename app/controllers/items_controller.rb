@@ -1,9 +1,14 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.includes(:purchase).all
     #@items = Item.order("created_at DESC")
+  end
+
+  def edit
   end
 
   def new
@@ -21,9 +26,32 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    if @item.update(item_params)
+      redirect_to @item, notice: '商品情報が更新されました。'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to items_path, notice: '商品が削除されました。'
+  end
+
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
+  end
+
+  def correct_user
+    unless current_user == @item.user
+      redirect_to items_path, alert: '権限がありません。'
+    end
   end
 end
