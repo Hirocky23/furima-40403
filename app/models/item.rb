@@ -19,5 +19,4 @@ class Item < ApplicationRecord
   validates :shipping_day_id, presence: true, numericality: { other_than: 0, message: "can't be blank" }
   validates :price, presence: true, numericality: { with: /\A[0-9]+\z/, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :image, presence: true
-  validates :user, presence: true
 end

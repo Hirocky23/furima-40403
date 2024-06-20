@@ -1,7 +1,10 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 
+//= require rails-ujs
+//= require turbolinks
+//= require_tree .
+
 import "@hotwired/turbo-rails"
-import Turbolinks from "turbolinks"
 import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "controllers"
