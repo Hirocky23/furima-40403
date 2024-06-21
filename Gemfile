@@ -86,4 +86,8 @@ gem 'rspec-rails', '~> 6.1.2'
 gem 'factory_bot_rails'
 
 gem 'active_hash'
+
 gem "webpacker", "~> 5.4"
+
+gem 'rails-ujs'
+
