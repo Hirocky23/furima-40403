@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
     @items = Item.order(created_at: :desc)
   end
 
+  def show
+  end
+
   #def edit
   #end
 
@@ -40,9 +43,9 @@ class ItemsController < ApplicationController
 
   private
 
-  #def set_item
-    #@item = Item.find(params[:id])
-  #end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
