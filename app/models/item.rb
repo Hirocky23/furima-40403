@@ -20,7 +20,4 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: { with: /\A[0-9]+\z/, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :image, presence: true
 
-def sold_out?
-  purchase.present?
-  end
 end
