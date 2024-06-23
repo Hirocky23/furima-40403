@@ -90,4 +90,3 @@ gem 'active_hash'
 gem "webpacker", "~> 5.4"
 
 gem 'rails-ujs'
-

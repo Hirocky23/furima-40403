@@ -5,3 +5,4 @@
 //= link application.css
 //= link items/index.css
 //= link items/exhibit-btn.css
+//= link_tree ../../javascript/controllers .js
