@@ -91,3 +91,4 @@ gem "webpacker", "~> 5.4"
 
 gem 'rails-ujs'
 
+gem 'turbolinks', '~> 5.2'
