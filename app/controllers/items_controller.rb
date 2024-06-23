@@ -10,8 +10,8 @@ class ItemsController < ApplicationController
   def show
   end
 
-  #def edit
-  #end
+  def edit
+  end
 
   def new
     @item = Item.new
@@ -28,13 +28,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def update
-    #if @item.update(item_params)
-      #redirect_to @item, notice: '商品情報が更新されました。'
-    #else
-      #render :edit
-    #end
-  #end
+  def update
+    if @item.update(item_params)
+      redirect_to @item, notice: '商品情報が更新されました。'
+    else
+      render :edit
+    end
+  end
 
   #def destroy
     #@item.destroy
@@ -51,8 +51,10 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
   end
 
-  #def correct_user
-    #unless current_user == @item.user
-      #redirect_to items_path, alert: '権限がありません。'
-    #end
+  def correct_user
+    unless current_user == @item.user
+      redirect_to items_path, alert: '権限がありません。'
+    end
   end
+end
+
