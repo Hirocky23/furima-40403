@@ -36,10 +36,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def destroy
-    #@item.destroy
-    #redirect_to items_path, notice: '商品が削除されました。'
-  #end
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+      redirect_to root_path
+    end
+  end
 
   private
 
@@ -56,5 +58,4 @@ class ItemsController < ApplicationController
       redirect_to items_path, alert: '権限がありません。'
     end
   end
-end
 
