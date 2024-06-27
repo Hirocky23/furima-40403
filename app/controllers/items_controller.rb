@@ -56,4 +56,4 @@ class ItemsController < ApplicationController
       redirect_to items_path, alert: '権限がありません。'
     end
   end
-
+end
