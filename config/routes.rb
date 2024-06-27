@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items do
     resources :purchases, only: [:new, :create]
+    resources :orders, only: [:index, :create]
   end
 end
