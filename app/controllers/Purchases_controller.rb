@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!
   before_action :redirect_if_sold_out, only: [:index, :create]
@@ -10,10 +10,17 @@ class OrdersController < ApplicationController
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
-      pay_item
-      @purchase_address.save
-      redirect_to root_path
+      begin
+        pay_item
+        @purchase_address.save
+        redirect_to root_path
+      rescue => e
+        puts "Error during payment or save: #{e.message}"
+        @purchase_address.errors.add(:base, "決済処理に失敗しました。もう一度お試しください。")
+        render :index
+      end
     else
+      puts "Validation errors: #{@purchase_address.errors.full_messages}"
       render :index
     end
   end

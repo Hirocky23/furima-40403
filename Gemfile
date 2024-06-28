@@ -87,3 +87,8 @@ gem 'factory_bot_rails'
 
 gem 'active_hash'
 
+gem 'pry-rails'
+
+group :test do
+  gem 'database_cleaner-active_record'
+end
