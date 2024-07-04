@@ -56,11 +56,36 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_21_074351) do
 
   create_table "products", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
+<<<<<<< Updated upstream
+=======
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "products", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+>>>>>>> Stashed changes
     t.string "name", null: false
     t.text "description", null: false
     t.integer "category_id", null: false
     t.integer "condition_id", null: false
     t.integer "shipping_payer_id", null: false
+<<<<<<< Updated upstream
+=======
+    t.integer "shipping_region_id", null: false
+    t.integer "shipping_day_id", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "purchase_addresses", charset: "utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+>>>>>>> Stashed changes
     t.integer "shipping_region_id", null: false
     t.integer "shipping_day_id", null: false
     t.integer "price", null: false
@@ -99,7 +124,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_21_074351) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
+<<<<<<< Updated upstream
   add_foreign_key "products", "users"
+=======
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "users"
+  add_foreign_key "purchase_addresses", "purchases"
+>>>>>>> Stashed changes
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
 end

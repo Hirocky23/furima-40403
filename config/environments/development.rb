@@ -67,4 +67,20 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # アセットのデバッグモードを有効にする
+  config.assets.debug = true
+
+  # アセットの動的コンパイルを有効にする
+  config.assets.compile = true
+
+  # JavaScriptのプリコンパイルを有効にする
+  config.assets.precompile += %w( application.js )
+
+  # ホストを許可する（必要に応じて）
+  config.hosts.clear
+
+  config.importmap.cache_sweepers << Rails.root.join("app/javascript")
+
 end
+

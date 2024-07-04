@@ -29,6 +29,7 @@
         ¥<%= "販売価格" %>
       </p>
     </div>
+<<<<<<< Updated upstream
     <%# /支払額の表示 %>
 
     <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
@@ -48,6 +49,41 @@
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
           <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
           <%= image_tag 'card-amex.gif', class: 'card-logo'%>
+=======
+    <%= form_with model: @purchase_address, url: item_orders_path(@item), id: 'charge-form', local: true do |f| %>
+    <%= render 'orders/error_messages', model: @purchase_address %>
+     <%= f.hidden_field :token, id: 'card-token' %>
+      <div class='credit-card-form'>
+        <h1 class='info-input-haedline'>
+          クレジットカード情報入力
+        </h1>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">カード情報</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <input type="text" id="number-form" class="input-default" placeholder="カード番号">
+          <div class='available-card'>
+            <%= image_tag 'card-visa.gif', class: 'card-logo' %>
+            <%= image_tag 'card-mastercard.gif', class: 'card-logo' %>
+            <%= image_tag 'card-jcb.gif', class: 'card-logo' %>
+            <%= image_tag 'card-amex.gif', class: 'card-logo' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">有効期限</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <input type="text" id="expiry-form" class="input-default" placeholder="MM/YY">
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">セキュリティコード</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <input type="text" id="cvc-form" class="input-default" placeholder="CVC">
+>>>>>>> Stashed changes
         </div>
       </div>
       <div class="form-group">

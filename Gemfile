@@ -87,3 +87,17 @@ gem 'factory_bot_rails'
 
 gem 'active_hash'
 
+<<<<<<< Updated upstream
+=======
+gem 'pry-rails'
+
+group :test do
+  gem 'database_cleaner-active_record'
+end
+
+gem 'payjp'
+
+gem 'gon'
+
+gem 'rack-cors'
+>>>>>>> Stashed changes
