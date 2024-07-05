@@ -1,4 +1,4 @@
-class PurchasesController < ApplicationController
+class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :authenticate_user!
   before_action :redirect_if_sold_out, only: [:index, :create]
