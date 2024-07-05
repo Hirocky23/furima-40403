@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @purchase_address = PurchaseAddress.new(purchase_address_params)
+    @purchase_address = PurchaseAddress.new(purchase_params)
 
     if @purchase_address.valid?
       begin
