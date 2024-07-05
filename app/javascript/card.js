@@ -1,6 +1,5 @@
 const pay = () => {
-  const publicKey = gon.public_key
-  const payjp = Payjp(publicKey)
+  const payjp = Payjp('pk_test_b25dfc84cb92fe011c85aad6')// PAY.JPテスト公開鍵
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -10,20 +9,23 @@ const pay = () => {
   expiryElement.mount('#expiry-form');
   cvcElement.mount('#cvc-form');
 
-  const form = document.getElementById("charge-form");
+  const form = document.getElementById('charge-form')
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
-        console.error("Error creating token:", response.error);
       } else {
         const token = response.id;
-        const tokenObj = `<input value=${token} name='purchase_address[token]' type="hidden">`;
-        form.insertAdjacentHTML("beforeend", tokenObj);
-        form.submit();
+        const renderDom = document.getElementById("charge-form");
+        const tokenObj = `<input value=${token} name='token' type="hidden">`;
+        renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
+      numberElement.clear();
+      expiryElement.clear();
+      cvcElement.clear();
+      document.getElementById("charge-form").submit();
     });
+    e.preventDefault();
   });
 };
 
-document.addEventListener("turbo:load", pay);
+window.addEventListener("turbo:load", pay);

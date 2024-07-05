@@ -94,6 +94,6 @@ group :test do
 
 gem 'payjp'
 
-gem 'gon'
+gem 'gon', '~> 6.4.0'
 
 end
