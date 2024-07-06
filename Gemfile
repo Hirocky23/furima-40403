@@ -94,6 +94,8 @@ group :test do
 
 gem 'payjp'
 
-gem 'gon', '~> 6.4.0'
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'gon'
 
 end

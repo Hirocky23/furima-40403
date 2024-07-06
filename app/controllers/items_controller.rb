@@ -44,16 +44,18 @@ class ItemsController < ApplicationController
   private
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
+    redirect_to root_path, alert: 'Item not found' if @item.nil?
   end
+end
 
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_region_id, :shipping_day_id, :price, :image)
   end
 
   def correct_user
+    return if @item.nil?
     unless current_user == @item.user
       redirect_to items_path, alert: '権限がありません。'
     end
   end
-end

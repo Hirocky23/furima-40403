@@ -27,7 +27,7 @@
       </p>
     </div>
 
-    <%= form_with model: @purchase_address, url: item_orders_path(@item), id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
+    <%= form_with model: @purchase_address, url: item_orders_path(@item), id: 'charge-form', class: 'transaction-form-wrap', local: true, data: { turbo: false } do |f| %>
       <%= render 'orders/error_messages', model: @purchase_address %>
        <%= f.hidden_field :token, id: 'card-token' %>
         <div class='credit-card-form'>
