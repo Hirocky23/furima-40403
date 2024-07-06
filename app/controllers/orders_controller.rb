@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_action :redirect_if_sold_out, only: [:index, :create]
 
   def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+
     @purchase_address = PurchaseAddress.new
   end
 
@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
         render :index
       end
     else
-      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       flash.now[:alert] = '入力内容に誤りがあります。'
       render :index
     end
