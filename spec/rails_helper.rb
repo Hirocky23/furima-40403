@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.before(:each) do
-    allow_any_instance_of(PurchasesController).to receive(:pay_item).and_return(true)
+    allow_any_instance_of(OrdersController).to receive(:pay_item).and_return(true)
   end
   
   config.formatter = :documentation

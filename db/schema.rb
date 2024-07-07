@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_28_082841) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_27_051145) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -54,28 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_28_082841) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "orders", charset: "utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_orders_on_item_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "purchase_addresses", charset: "utf8", force: :cascade do |t|
-    t.string "postal_code", null: false
-    t.integer "shipping_region_id", null: false
-    t.string "city", null: false
-    t.string "address_line", null: false
-    t.string "building_name"
-    t.string "phone_number", null: false
-    t.bigint "purchase_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["purchase_id"], name: "index_purchase_addresses_on_purchase_id"
-  end
-
   create_table "purchases", charset: "utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "user_id", null: false
@@ -86,16 +64,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_28_082841) do
   end
 
   create_table "shipping_addresses", charset: "utf8", force: :cascade do |t|
-    t.bigint "order_id", null: false
-    t.string "postal_code"
-    t.integer "shipping_region_id"
-    t.string "city"
-    t.string "address_line"
+    t.bigint "purchase_id", null: false
+    t.string "postal_code", null: false
+    t.integer "shipping_region_id", null: false
+    t.string "city", null: false
+    t.string "address_line", null: false
     t.string "building_name"
-    t.string "phone_number"
+    t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_shipping_addresses_on_order_id"
+    t.index ["purchase_id"], name: "index_shipping_addresses_on_purchase_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -121,8 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_28_082841) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
-  add_foreign_key "purchase_addresses", "purchases"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
-  add_foreign_key "shipping_addresses", "orders"
+  add_foreign_key "shipping_addresses", "purchases"
 end

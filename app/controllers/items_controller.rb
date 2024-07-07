@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
-
+  before_action :check_item_sold, only: [:edit, :update, :destroy]
   def index
     @items = Item.order(created_at: :desc)
   end
@@ -57,5 +57,12 @@ end
     return if @item.nil?
     unless current_user == @item.user
       redirect_to items_path, alert: '権限がありません。'
+    end
+  end
+
+  def check_item_sold
+    return if @item.nil?
+    if @item.sold_out?
+      redirect_to root_path, alert: '売却済みの商品は編集できません。'
     end
   end

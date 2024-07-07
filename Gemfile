@@ -91,9 +91,9 @@ gem 'pry-rails'
 
 group :test do
   gem 'database_cleaner-active_record'
-
+end
 gem 'payjp'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
-end
+gem 'gon'
