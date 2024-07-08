@@ -15,7 +15,7 @@ class PurchaseAddress
   validates :shipping_region_id, numericality: { other_than: 0, message: "can't be blank" }
 
   def save
-    purchase = Purchase.create!(user_id: user_id, item_id: item_id)
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
     ShippingAddress.create(
       postal_code: postal_code,
       shipping_region_id: shipping_region_id,
