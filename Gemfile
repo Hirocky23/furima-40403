@@ -87,3 +87,13 @@ gem 'factory_bot_rails'
 
 gem 'active_hash'
 
+gem 'pry-rails'
+
+group :test do
+  gem 'database_cleaner-active_record'
+end
+gem 'payjp'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'gon'
