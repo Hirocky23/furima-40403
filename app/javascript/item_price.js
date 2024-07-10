@@ -24,6 +24,5 @@ const calculatePrice = () => {
   }
 };
 
-// Turboのイベントとfallbackのため両方のイベントリスナーを追加
-document.addEventListener("turbo:load", calculatePrice);
-document.addEventListener("DOMContentLoaded", calculatePrice);
+window.addEventListener("turbo:load", calculatePrice);
+window.addEventListener("turbo:render", calculatePrice);
